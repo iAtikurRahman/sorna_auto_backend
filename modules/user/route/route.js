@@ -4,11 +4,20 @@ const multer = require('multer');
 const storage = multer.memoryStorage(); // Store files in memory as buffers
 const upload = multer({ storage: storage });
 const {
-    createUserByAdmin
+  createUserByAdmin,
+  getAllUsers,
+  updateUser,
+  deleteUser
   } = require('../controller/controller.js');
 
 // Create a new event feed comment
-router.post('/create/:id',upload.fields([{name:'picture',maxCount:1},{name:'nid_picture',maxCount:1}]), createUserByAdmin);
+router.post('/create/:id',upload.fields([{name:'picture'},{name:'nid_picture'}]), createUserByAdmin);
+
+router.get('/get/all',getAllUsers);
+
+router.post('/update/:id',upload.fields([{name:'picture'},{name:'nid_picture'}]), updateUser);
+
+router.get('/delete/:id',deleteUser);
 
 
 module.exports = router;

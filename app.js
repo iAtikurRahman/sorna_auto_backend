@@ -45,7 +45,7 @@ app.get('/health', (req, res) => res.status(200).json({ message: 'All is Well!' 
 app.use('*', (req, res) => res.status(404).json({ error: 'Route Not Found' }));
 
 // Global error handling middleware
-app.use((err, req, res, next) => res.status(500).json({ error: 'Internal Server Error' }));
+// app.use((err, req, res, next) => res.status(500).json({ error: 'Internal Server Error' }));
 
 // Socket.io connection handling
 io.on('connection', (socket) => {
